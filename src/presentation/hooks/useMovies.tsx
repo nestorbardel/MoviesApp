@@ -29,10 +29,9 @@ export const useMovies = () => {
       setUpcoming(upcomingMovies);
       setTopRated(topRatedMovies);
       setPopular(popularMovies);
+      setIsLoading(false);
     } catch (error) {
       console.error('Error loading movies', error);
-    } finally {
-      setIsLoading(false);
     }
   };
 
