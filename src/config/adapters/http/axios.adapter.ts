@@ -11,7 +11,7 @@ export class AxiosAdapter implements HttpAdapter {
         this.axiosInstance = axios.create({
             baseURL: options.baseUrl,
             params: options.params,
-        })
+        });
     }
     async get<T>(url: string, options?: Record<string, unknown> | undefined): Promise<T> {
         try {
