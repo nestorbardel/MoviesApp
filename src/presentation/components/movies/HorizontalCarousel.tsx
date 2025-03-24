@@ -20,6 +20,7 @@ export const HorizontalCarousel = ({movies, title, loadNextPage}: Props) => {
     },[movies]);
     
     const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
+        if(isLoading.current) return;
         const {contentOffset, layoutMeasurement, contentSize} = event.nativeEvent;
         const isEndReached = (contentOffset.x + layoutMeasurement.width + 600) >= contentSize.width;
         if(!isEndReached) return;
@@ -49,7 +50,7 @@ export const HorizontalCarousel = ({movies, title, loadNextPage}: Props) => {
                 renderItem={({item}) => (
                     <MoviePoster movie={item} height={200} width={140} />
                 )}
-                keyExtractor={item => item.id.toString()}
+                keyExtractor={(item, index) => `${item.id}-${index}`}
                 horizontal
                 showsHorizontalScrollIndicator={false}
                 onScroll={onScroll}
