@@ -1,13 +1,14 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import { RootStackParams } from '../../navigation/Navigation';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParams} from '../../navigation/Navigation';
+import {useMovie} from '../../hooks/useMovie';
 
-interface Props extends StackScreenProps<RootStackParams, 'Details'>{};
+interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
-export const DetailsScreen = ({route} : Props) => {
+export const DetailsScreen = ({route}: Props) => {
     const {movieId} = route.params;
-    console.log(movieId);
+    const {} = useMovie(Number(movieId));
     return (
         <View>
             <Text>DetailsScreen</Text>
