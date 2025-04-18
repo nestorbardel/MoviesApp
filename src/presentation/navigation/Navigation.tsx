@@ -5,7 +5,7 @@ import { DetailsScreen } from '../screens/details/DetailsScreen';
 
 export type RootStackParams = {
   Home: undefined;
-  Details: {movieId: string | number};
+  Details: {movieId: number};
 };
 
 const Stack = createStackNavigator<RootStackParams>();
