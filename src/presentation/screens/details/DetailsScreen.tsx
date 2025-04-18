@@ -9,10 +9,17 @@ interface Props extends StackScreenProps<RootStackParams, 'Details'> {}
 
 export const DetailsScreen = ({route}: Props) => {
     const {movieId} = route.params;
-    const {movie} = useMovie(movieId);
+    const {isLoading, movie} = useMovie(movieId);
+    if (isLoading) {
+        return <Text>Loading...</Text>;
+    }
     return (
         <View>
-            <MovieHeader movie={movie}/>
+            <MovieHeader
+                 originalTitle={movie!.originalTitle}
+                 poster={movie!.poster}
+                 title={movie!.title}
+            />
         </View>
     );
 };
